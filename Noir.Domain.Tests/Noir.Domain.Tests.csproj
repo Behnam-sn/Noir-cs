@@ -20,4 +20,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Noir.Domain\Noir.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
