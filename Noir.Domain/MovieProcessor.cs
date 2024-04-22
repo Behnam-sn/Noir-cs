@@ -1,3 +1,5 @@
+using Noir.Domain.Contracts;
+
 namespace Noir.Domain;
 
 public class MovieProcessor : IProcessor

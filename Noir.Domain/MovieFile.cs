@@ -1,3 +1,4 @@
+using Noir.Domain.Contracts;
 using System.Text.RegularExpressions;
 
 namespace Noir.Domain;
