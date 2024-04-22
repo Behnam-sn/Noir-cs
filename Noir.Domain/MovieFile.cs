@@ -20,11 +20,14 @@ internal class MovieFile : IMovie, IVideoFile
 
     public override string ToString()
     {
-        return Name;
+        return $"{Name}.{Format}";
     }
 
-    internal static MovieFile Parse(string fileName)
+    internal static MovieFile Parse(string fullFileName)
     {
+        var lastIndexOfDot = fullFileName.LastIndexOf('.');
+        var fileName = fullFileName[..lastIndexOfDot];
+        var fileFormat = fullFileName[(lastIndexOfDot + 1)..];
         // year
         var yearRegex = new Regex(@"\d\d\d\d");
         var matchedYears = yearRegex.Matches(fileName).Select(m => m.Value).ToList();
@@ -35,8 +38,8 @@ internal class MovieFile : IMovie, IVideoFile
         {
             var yearIndex = fileName.LastIndexOf(year);
             var name = fileName[..yearIndex];
-            return new MovieFile(name: name.Clean(), format: "", year: year);
+            return new MovieFile(name: name.Clean(), format: fileFormat, year: year);
         }
-        return new MovieFile(name: fileName.Clean(), format: "");
+        return new MovieFile(name: fileName.Clean(), format: fileFormat);
     }
 }

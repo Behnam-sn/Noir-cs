@@ -6,7 +6,7 @@ public class MovieProcessor : IProcessor
 {
     public string Process(string fileName)
     {
-        var movie = MovieFile.Parse(fileName: fileName);
+        var movie = MovieFile.Parse(fullFileName: fileName);
         return movie.ToString();
     }
 }
