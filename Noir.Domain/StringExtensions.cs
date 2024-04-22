@@ -9,6 +9,7 @@ internal static class StringExtensions
             new(text: text, character :' '),
             new(text: text, character: '.'),
             new(text: text, character: '-'),
+            new(text: text, character: '_'),
         };
         var separator = possibleSeparators.MaxBy(t => t.Count);
         var cleanName = separator.Character == ' ' ? text : text.Replace(separator.Character, ' ');
