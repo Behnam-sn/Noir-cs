@@ -1,4 +1,6 @@
-﻿namespace Noir.Console;
+﻿using Noir.Service;
+
+namespace Noir.Console;
 
 internal class Program
 {
@@ -11,7 +13,7 @@ internal class Program
 
             if (command == "movie" || command == "m")
             {
-                HandleMovie();
+                ProcessMovie();
             }
 
             if (command == "series" || command == "s")
@@ -31,9 +33,30 @@ internal class Program
         }
     }
 
-    private static void HandleMovie()
+    private static void ProcessMovie()
     {
-        throw new NotImplementedException();
+        // take the address as input
+        System.Console.Write("Path: ");
+        var path = System.Console.ReadLine();
+        try
+        {
+            // give it to MovieService for rename preview
+            var movieService = new MovieRenameService();
+            // retrieve the information
+            var previewData = movieService.Preview(path);
+            // show it as preview
+            foreach (var item in previewData)
+            {
+                System.Console.WriteLine($"{item.OldName} --> {item.NewName}");
+            }
+            // ask for conformation
+            // give it to MovieService for rename
+
+        }
+        catch (Exception exception)
+        {
+            System.Console.WriteLine(exception.Message);
+        }
     }
 
     private static void HandleSeries()
