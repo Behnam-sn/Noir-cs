@@ -4,9 +4,9 @@ namespace Noir.Domain;
 
 public class MovieProcessor : IProcessor
 {
-    public string Process(string fileName)
+    public string? Process(string fileName)
     {
-        var movie = MovieFile.Parse(fullFileName: fileName);
-        return movie.ToString();
+        var movie = Movie.Parse(fileName: fileName);
+        return movie?.ToString();
     }
 }

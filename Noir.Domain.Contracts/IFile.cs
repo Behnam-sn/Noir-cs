@@ -2,5 +2,5 @@
 
 public interface IFile
 {
-    string Format { get; }
+    string Extension { get; }
 }
