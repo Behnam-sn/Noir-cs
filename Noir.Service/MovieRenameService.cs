@@ -13,12 +13,26 @@ public class MovieRenameService
             throw new Exception($"'{path}' is not a valid file or directory.");
         }
 
-        var fileEntries = Directory.GetFiles(path);
-        return fileEntries.Select(fileName => new RenameContext(
+        var contexts = new List<RenameContext>();
+        var files = Directory.EnumerateFiles(path);
+
+        foreach (var file in files)
+        {
+            var fileName = Path.GetFileName(file);
+            var newFileName = _processor.Process(fileName: fileName);
+
+            if (newFileName is null)
+            {
+                continue;
+            }
+
+            contexts.Add(new RenameContext(
                 path: path,
-                oldName: Path.GetFileName(fileName),
-                newName: _processor.Process(fileName: Path.GetFileName(fileName))))
-            .ToList();
+                oldName: fileName,
+                newName: newFileName));
+        }
+
+        return contexts;
     }
 
     public IEnumerable<RenameContext> Rename(string? path)
