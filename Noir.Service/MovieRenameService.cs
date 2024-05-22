@@ -29,20 +29,33 @@ public class MovieRenameService
         }
 
         var contexts = new List<RenameContext>();
-        var fileEntries = Directory.GetFiles(path);
-        var ak = Directory.EnumerateFiles(path);
-        foreach (var file in fileEntries)
-        {
-            var newName = _processor.Process(fileName: Path.GetFileName(file));
-            var newFilePath = Path.Combine(path, newName);
+        var files = Directory.EnumerateFiles(path);
 
+        foreach (var file in files)
+        {
+            var fileName = Path.GetFileName(file);
+            var newFileName = _processor.Process(fileName: fileName);
+
+            if (newFileName is null)
+            {
+                continue;
+            }
+
+            var directoryName = Path.GetFileNameWithoutExtension(newFileName);
+            var directoryPath = Path.Combine(path, directoryName);
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            var newFilePath = Path.Combine(directoryPath, newFileName);
             File.Move(file, newFilePath);
 
-            var context = new RenameContext(
+            contexts.Add(new RenameContext(
                 path: path,
-                oldName: Path.GetFileName(file),
-                newName: newName);
-            contexts.Add(context);
+                oldName: fileName,
+                newName: newFileName));
         }
 
         return contexts;
