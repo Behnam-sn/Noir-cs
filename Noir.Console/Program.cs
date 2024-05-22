@@ -35,23 +35,27 @@ internal class Program
 
     private static void ProcessMovie()
     {
-        // take the address as input
         System.Console.Write("Path: ");
         var path = System.Console.ReadLine();
         try
         {
-            // give it to MovieService for rename preview
             var movieService = new MovieRenameService();
-            // retrieve the information
             var previewData = movieService.Preview(path);
-            // show it as preview
+
             foreach (var item in previewData)
             {
                 System.Console.WriteLine($"{item.OldName} --> {item.NewName}");
             }
-            // ask for conformation
-            // give it to MovieService for rename
 
+            var conformation = System.Console.ReadLine();
+            if (conformation?.ToLower() == "y")
+            {
+                var items = movieService.Rename(path);
+                foreach (var item in items)
+                {
+                    System.Console.WriteLine($"{item.OldName} --> {item.NewName}");
+                }
+            }
         }
         catch (Exception exception)
         {
