@@ -1,4 +1,5 @@
 ﻿using Noir.Domain.Contracts;
+using Noir.Service.Contracts;
 
 namespace Noir.Service;
 
@@ -40,7 +41,7 @@ public abstract class RenameServiceBase : IRenameService
         return contexts;
     }
 
-    public IEnumerable<RenameContext> Rename(string? path)
+    public virtual IEnumerable<RenameContext> Rename(string? path)
     {
         throw new NotImplementedException();
     }

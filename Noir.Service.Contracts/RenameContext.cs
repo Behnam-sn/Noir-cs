@@ -1,4 +1,4 @@
-namespace Noir.Service;
+namespace Noir.Service.Contracts;
 
 public class RenameContext
 {

@@ -1,4 +1,5 @@
 using Noir.Domain;
+using Noir.Service.Contracts;
 
 namespace Noir.Service;
 
@@ -8,7 +9,7 @@ public class MovieRenameService : RenameServiceBase
     {
     }
 
-    public IEnumerable<RenameContext> Rename(string? path)
+    public override IEnumerable<RenameContext> Rename(string? path)
     {
         if (!Directory.Exists(path))
         {
