@@ -7,9 +7,4 @@ public class SeriesRenameService : RenameServiceBase
     public SeriesRenameService() : base(new SeriesProcessor())
     {
     }
-
-    public IEnumerable<RenameContext> Rename(string? path)
-    {
-        throw new NotImplementedException();
-    }
 }
