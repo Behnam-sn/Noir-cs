@@ -1,12 +1,12 @@
 ﻿using Noir.Domain.Contracts;
 
-namespace Noir.Domain
+namespace Noir.Domain;
+
+public class SeriesProcessor : IProcessor
 {
-    public class SeriesProcessor : IProcessor
+    public string? Process(string fileName)
     {
-        public string? Process(string fileName)
-        {
-            throw new NotImplementedException();
-        }
+        var series = Series.Parse(fileName: fileName);
+        return series?.ToString();
     }
 }
