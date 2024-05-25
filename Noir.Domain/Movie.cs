@@ -4,22 +4,22 @@ namespace Noir.Domain;
 
 internal class Movie
 {
-    public Movie(string name, string? year = null, string? quality = null, string? extension = null)
+    public Movie(string title, string? year = null, string? quality = null, string? extension = null)
     {
-        Name = name;
+        Title = title;
         Year = year;
         Quality = quality;
         Extension = extension;
     }
 
-    public string Name { get; }
+    public string Title { get; }
     public string? Year { get; }
     public string? Quality { get; }
     public string? Extension { get; }
 
     public override string ToString()
     {
-        return $"{Name}{Extension}";
+        return $"{Title}{Extension}";
     }
 
     internal static Movie? Parse(string fileName)
@@ -31,11 +31,11 @@ internal class Movie
 
         var year = ExtractYear(fileName);
         var quality = ExtractQuality(fileName);
-        var name = ExtractName(fileName, year, quality);
-        var cleanName = ClearName(name);
+        var title = ExtractTitle(fileName, year, quality);
+        var cleanTitle = ClearTitle(title);
         var extension = Path.GetExtension(fileName);
 
-        return new Movie(cleanName, year, quality, extension);
+        return new Movie(cleanTitle, year, quality, extension);
     }
 
     private static string? ExtractYear(string fileName)
@@ -52,7 +52,7 @@ internal class Movie
         return null;
     }
 
-    private static string ExtractName(string fileName, string? year, string? quality)
+    private static string ExtractTitle(string fileName, string? year, string? quality)
     {
         var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
         if (year is not null)
@@ -64,7 +64,7 @@ internal class Movie
         return fileNameWithoutExtension;
     }
 
-    private static string ClearName(string name)
+    private static string ClearTitle(string name)
     {
         var possibleSeparators = new Separator[]
         {
