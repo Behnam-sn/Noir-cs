@@ -1,6 +1,6 @@
 ﻿namespace Noir.Domain;
 
-internal class Series
+public class Series
 {
     public Series(string title, int season, int episode, string? quality = null, string? extension = null)
     {
@@ -22,7 +22,7 @@ internal class Series
         return $"{Title} S{Season}E{Episode}{Extension}";
     }
 
-    internal static Series? Parse(string fileName)
+    public static Series? Parse(string fileName)
     {
         if (string.IsNullOrEmpty(fileName))
         {
