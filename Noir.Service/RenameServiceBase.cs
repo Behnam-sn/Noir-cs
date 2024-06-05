@@ -24,25 +24,41 @@ public abstract class RenameServiceBase : IRenameService
 
         foreach (var file in files)
         {
-            var fileName = Path.GetFileName(file);
-            var newFileName = _processor.Process(fileName);
+            var renameContext = _processor.Preview(fileNameWithPath: file);
 
-            if (newFileName is null)
+            if (renameContext is null)
             {
                 continue;
             }
 
-            contexts.Add(new RenameContext(
-                path: path,
-                oldName: fileName,
-                newName: newFileName));
+            contexts.Add(renameContext);
         }
 
         return contexts;
     }
 
-    public virtual IEnumerable<RenameContext> Rename(string? path)
+    public IEnumerable<RenameContext> Rename(string? path)
     {
-        throw new NotImplementedException();
+        if (!Directory.Exists(path))
+        {
+            throw new Exception($"'{path}' is not a valid file or directory.");
+        }
+
+        var contexts = new List<RenameContext>();
+        var files = Directory.EnumerateFiles(path);
+
+        foreach (var file in files)
+        {
+            var renameContext = _processor.Rename(fileNameWithPath: file);
+
+            if (renameContext is null)
+            {
+                continue;
+            }
+
+            contexts.Add(renameContext);
+        }
+
+        return contexts;
     }
 }
