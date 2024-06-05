@@ -1,4 +1,5 @@
-﻿using Noir.Service;
+﻿using Noir.Domain.Contracts;
+using Noir.Service;
 using Noir.Service.Contracts;
 
 namespace Noir.Console

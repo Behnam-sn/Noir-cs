@@ -1,4 +1,6 @@
-﻿namespace Noir.Service.Contracts;
+﻿using Noir.Domain.Contracts;
+
+namespace Noir.Service.Contracts;
 
 public interface IRenameService
 {
