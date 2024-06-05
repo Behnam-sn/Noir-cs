@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace Noir.Domain;
 
-internal class Movie
+public class Movie
 {
     public Movie(string title, string? year = null, string? quality = null, string? extension = null)
     {
@@ -22,7 +22,7 @@ internal class Movie
         return $"{Title}{Extension}";
     }
 
-    internal static Movie? Parse(string fileName)
+    public static Movie? Parse(string fileName)
     {
         if (string.IsNullOrEmpty(fileName))
         {
