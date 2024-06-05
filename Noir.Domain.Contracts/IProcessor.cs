@@ -2,5 +2,7 @@ namespace Noir.Domain.Contracts;
 
 public interface IProcessor
 {
-    string? Process(string fileName);
+    RenameContext? Rename(string fileNameWithPath);
+
+    RenameContext? Preview(string fileNameWithPath);
 }
