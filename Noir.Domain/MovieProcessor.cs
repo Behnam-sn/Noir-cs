@@ -2,7 +2,7 @@ using Noir.Domain.Contracts;
 
 namespace Noir.Domain;
 
-public class MovieRenameProcessor : IProcessor
+public class MovieProcessor : IProcessor
 {
     public RenameContext? Preview(string fileNameWithPath)
     {

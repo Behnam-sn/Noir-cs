@@ -4,7 +4,7 @@ namespace Noir.Service;
 
 public class MovieRenameService : RenameServiceBase
 {
-    public MovieRenameService() : base(new MovieRenameProcessor())
+    public MovieRenameService() : base(new MovieProcessor())
     {
     }
 }
