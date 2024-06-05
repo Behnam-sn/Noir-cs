@@ -2,7 +2,7 @@
 
 namespace Noir.Domain;
 
-public class SeriesRenameProcessor : IProcessor
+public class SeriesProcessor : IProcessor
 {
     public RenameContext? Preview(string fileNameWithPath)
     {
