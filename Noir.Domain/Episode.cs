@@ -2,24 +2,22 @@
 
 public class Episode
 {
-    public Episode(string title, int season, int episode, string? quality = null, string? extension = null)
+    public Episode(EpisodeTitle title, EpisodeIndex index, Quality? quality = null, FileExtension? extension = null)
     {
         Title = title;
-        Season = season;
-        EpisodeNumber = episode;
+        Index = index;
         Quality = quality;
         Extension = extension;
     }
 
-    public string Title { get; }
-    public int Season { get; }
-    public int EpisodeNumber { get; }
-    public string? Quality { get; }
-    public string? Extension { get; }
+    public EpisodeTitle Title { get; }
+    public EpisodeIndex Index { get; }
+    public Quality? Quality { get; }
+    public FileExtension? Extension { get; }
 
     public override string ToString()
     {
-        return $"{Title} S{Season}E{EpisodeNumber}{Extension}";
+        return $"{Title} {Index}{Extension}";
     }
 
     public static Episode? Parse(string fileName)
@@ -29,38 +27,11 @@ public class Episode
             return null;
         }
 
-        var season = ExtractSeason(fileName);
-        var episode = ExtractEpisode(fileName);
-        var quality = ExtractQuality(fileName);
-        var title = ExtractTitle(fileName, season, episode, quality);
-        var cleanTitle = ClearTitle(title);
-        var extension = Path.GetExtension(fileName);
+        var index = EpisodeIndex.Parse(fileName);
+        var quality = Quality.Parse(fileName);
+        var title = EpisodeTitle.Parse(fileName, index, quality);
+        var extension = FileExtension.Parse(fileName);
 
-        return new Episode(cleanTitle, season, episode, quality, extension);
-    }
-
-    private static int ExtractSeason(string fileName)
-    {
-        throw new NotImplementedException();
-    }
-
-    private static int ExtractEpisode(string fileName)
-    {
-        throw new NotImplementedException();
-    }
-
-    private static string? ExtractQuality(string fileName)
-    {
-        throw new NotImplementedException();
-    }
-
-    private static string ExtractTitle(string fileName, int season, int episode, string? quality)
-    {
-        throw new NotImplementedException();
-    }
-
-    private static string ClearTitle(object title)
-    {
-        throw new NotImplementedException();
+        return new Episode(title, index, quality, extension);
     }
 }

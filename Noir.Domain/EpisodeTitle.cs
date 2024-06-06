@@ -6,7 +6,7 @@ public class EpisodeTitle : Title
     {
     }
 
-    public static EpisodeTitle Parse()
+    public static EpisodeTitle Parse(string fileName, EpisodeIndex index, Quality? quality)
     {
         throw new NotImplementedException();
     }
