@@ -6,8 +6,11 @@ public class EpisodeTitle : Title
     {
     }
 
-    public static EpisodeTitle Parse(string fileName, Season season, EpisodeIndex index, Quality? quality)
+    public static EpisodeTitle Parse(string fileName, Season season, EpisodeIndex episode, Quality? quality)
     {
-        throw new NotImplementedException();
+        var index = $"{season}{episode}";
+        var i = fileName.IndexOf(index);
+        var name = fileName[..i];
+        return new EpisodeTitle(name);
     }
 }
