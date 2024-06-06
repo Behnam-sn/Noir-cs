@@ -4,7 +4,7 @@ namespace Noir.Domain;
 
 public class Movie
 {
-    public Movie(string title, string? year = null, string? quality = null, string? extension = null)
+    public Movie(MovieTitle title, string? year = null, string? quality = null, string? extension = null)
     {
         Title = title;
         Year = year;
@@ -12,7 +12,7 @@ public class Movie
         Extension = extension;
     }
 
-    public string Title { get; }
+    public MovieTitle Title { get; }
     public string? Year { get; }
     public string? Quality { get; }
     public string? Extension { get; }
@@ -31,11 +31,10 @@ public class Movie
 
         var year = ExtractYear(fileName);
         var quality = ExtractQuality(fileName);
-        var title = ExtractTitle(fileName, year, quality);
-        var cleanTitle = ClearTitle(title);
+        var title = MovieTitle.Parse(fileName, year, quality);
         var extension = Path.GetExtension(fileName);
 
-        return new Movie(cleanTitle, year, quality, extension);
+        return new Movie(title, year, quality, extension);
     }
 
     private static string? ExtractYear(string fileName)
@@ -50,18 +49,6 @@ public class Movie
     private static string? ExtractQuality(string fileName)
     {
         return null;
-    }
-
-    private static string ExtractTitle(string fileName, string? year, string? quality)
-    {
-        var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
-        if (year is not null)
-        {
-            var yearIndex = fileNameWithoutExtension.LastIndexOf(year);
-            var name = fileName[..yearIndex];
-            return name;
-        }
-        return fileNameWithoutExtension;
     }
 
     private static string ClearTitle(string name)
