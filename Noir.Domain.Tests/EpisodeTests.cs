@@ -1,6 +1,6 @@
 ﻿namespace Noir.Domain.Tests;
 
-public class SeriesTests
+public class EpisodeTests
 {
     //[InlineData("Regular.Show.S08E30E31.A.Regular.Epic.Final.Battle.Part.2.720p.STAN.WEB-DL.x264", "Regular Show S08E30E31")]
     [Theory]
@@ -11,7 +11,7 @@ public class SeriesTests
     {
         // Given
         // When
-        var series = Series.Parse(fileName: fileName);
+        var series = Episode.Parse(fileName: fileName);
         var actual = series?.ToString();
         // Then
         Assert.Equal(expected, actual);

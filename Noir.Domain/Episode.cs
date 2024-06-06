@@ -1,28 +1,28 @@
 ﻿namespace Noir.Domain;
 
-public class Series
+public class Episode
 {
-    public Series(string title, int season, int episode, string? quality = null, string? extension = null)
+    public Episode(string title, int season, int episode, string? quality = null, string? extension = null)
     {
         Title = title;
         Season = season;
-        Episode = episode;
+        EpisodeNumber = episode;
         Quality = quality;
         Extension = extension;
     }
 
     public string Title { get; }
     public int Season { get; }
-    public int Episode { get; }
+    public int EpisodeNumber { get; }
     public string? Quality { get; }
     public string? Extension { get; }
 
     public override string ToString()
     {
-        return $"{Title} S{Season}E{Episode}{Extension}";
+        return $"{Title} S{Season}E{EpisodeNumber}{Extension}";
     }
 
-    public static Series? Parse(string fileName)
+    public static Episode? Parse(string fileName)
     {
         if (string.IsNullOrEmpty(fileName))
         {
@@ -36,7 +36,7 @@ public class Series
         var cleanTitle = ClearTitle(title);
         var extension = Path.GetExtension(fileName);
 
-        return new Series(cleanTitle, season, episode, quality, extension);
+        return new Episode(cleanTitle, season, episode, quality, extension);
     }
 
     private static int ExtractSeason(string fileName)
