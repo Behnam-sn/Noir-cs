@@ -6,7 +6,7 @@ public class MovieTitle : Title
     {
     }
 
-    public static MovieTitle Parse(string fileName, Year? year, string? quality)
+    public static MovieTitle Parse(string fileName, Year? year, Quality? quality)
     {
         var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
 
