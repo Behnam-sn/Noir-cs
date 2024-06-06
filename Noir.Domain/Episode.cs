@@ -31,6 +31,12 @@ public class Episode
 
         var season = Season.Parse(fileName);
         var episode = EpisodeIndex.Parse(fileName);
+
+        if (season is null || episode is null)
+        {
+            return null;
+        }
+
         var quality = Quality.Parse(fileName);
         var title = EpisodeTitle.Parse(fileName, season, episode, quality);
         var extension = FileExtension.Parse(fileName);
