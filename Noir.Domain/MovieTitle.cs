@@ -6,13 +6,13 @@ public class MovieTitle : Title
     {
     }
 
-    public static MovieTitle Parse(string fileName, string? year, string? quality)
+    public static MovieTitle Parse(string fileName, Year? year, string? quality)
     {
         var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
 
         if (year is not null)
         {
-            var yearIndex = fileNameWithoutExtension.LastIndexOf(year);
+            var yearIndex = fileNameWithoutExtension.LastIndexOf(year.Numbers);
             var name = fileName[..yearIndex];
             return new MovieTitle(name);
         }

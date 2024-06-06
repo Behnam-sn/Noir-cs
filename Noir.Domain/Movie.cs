@@ -1,10 +1,8 @@
-using System.Text.RegularExpressions;
-
 namespace Noir.Domain;
 
 public class Movie
 {
-    public Movie(MovieTitle title, string? year = null, string? quality = null, string? extension = null)
+    public Movie(MovieTitle title, Year? year = null, string? quality = null, string? extension = null)
     {
         Title = title;
         Year = year;
@@ -13,7 +11,7 @@ public class Movie
     }
 
     public MovieTitle Title { get; }
-    public string? Year { get; }
+    public Year? Year { get; }
     public string? Quality { get; }
     public string? Extension { get; }
 
@@ -29,21 +27,12 @@ public class Movie
             return null;
         }
 
-        var year = ExtractYear(fileName);
+        var year = Year.Parse(fileName);
         var quality = ExtractQuality(fileName);
         var title = MovieTitle.Parse(fileName, year, quality);
         var extension = Path.GetExtension(fileName);
 
         return new Movie(title, year, quality, extension);
-    }
-
-    private static string? ExtractYear(string fileName)
-    {
-        var yearRegex = new Regex(@"\d\d\d\d");
-        var matchedYears = yearRegex.Matches(fileName).Select(m => m.Value).ToList();
-        matchedYears.Remove("1080");
-        var year = matchedYears.LastOrDefault();
-        return year;
     }
 
     private static string? ExtractQuality(string fileName)
