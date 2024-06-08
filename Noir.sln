@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noir.Domain.Tests", "Noir.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noir.Domain.Contracts", "Noir.Domain.Contracts\Noir.Domain.Contracts.csproj", "{48183E48-B939-41C6-8833-6D6B6F15C1D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noir.Service.Contracts", "Noir.Service.Contracts\Noir.Service.Contracts.csproj", "{BD7A2F8D-47E9-4473-AF3C-D6A4770E0A61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noir.Service.Contracts", "Noir.Service.Contracts\Noir.Service.Contracts.csproj", "{BD7A2F8D-47E9-4473-AF3C-D6A4770E0A61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A85AA0CD-EDFA-4772-98CA-2BACBB88FCAF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
