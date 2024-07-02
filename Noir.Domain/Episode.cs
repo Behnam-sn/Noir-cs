@@ -2,22 +2,22 @@
 
 public class Episode
 {
-    public Episode(EpisodeTitle title, EpisodeIndex episodeIndex, Quality? quality = null, FileExtension? extension = null)
+    public Episode(EpisodeTitle title, EpisodeIndex index, Quality? quality = null, FileExtension? extension = null)
     {
         Title = title;
-        EpisodeIndex = episodeIndex;
+        Index = index;
         Quality = quality;
         Extension = extension;
     }
 
     public EpisodeTitle Title { get; }
-    public EpisodeIndex EpisodeIndex { get; }
+    public EpisodeIndex Index { get; }
     public Quality? Quality { get; }
     public FileExtension? Extension { get; }
 
     public override string ToString()
     {
-        return $"{Title} {EpisodeIndex}{Extension}";
+        return $"{Title} {Index}{Extension}";
     }
 
     public static Episode? Parse(string fileName)

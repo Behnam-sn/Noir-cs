@@ -15,7 +15,7 @@ public class EpisodeRenameService : RenameServiceBase
         }
 
         return new RenameContext(
-            parentDirectoryName: $"Season {episode.EpisodeIndex.Season}",
+            parentDirectoryName: $"Season {episode.Index.Season}",
             oldName: fileName,
             newName: episode.ToString());
     }
