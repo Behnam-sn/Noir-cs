@@ -31,7 +31,7 @@ namespace Noir.Console
             try
             {
                 var previewContexts = renameService.Execute(new RenamePreviewCommand(path));
-                PrintRenameContexts(previewContexts);
+                PrintRenameContexts(previewContexts, ConsoleColor.Yellow);
 
                 System.Console.WriteLine("");
                 System.Console.Write("Confirm [y/n]?");
@@ -40,7 +40,7 @@ namespace Noir.Console
                 if (conformation?.ToLower() == "y")
                 {
                     var renameContexts = renameService.Execute(new RenameCommand(path));
-                    PrintRenameContexts(renameContexts);
+                    PrintRenameContexts(renameContexts, ConsoleColor.Green);
                 }
             }
             catch (Exception exception)
@@ -49,12 +49,16 @@ namespace Noir.Console
             }
         }
 
-        private static void PrintRenameContexts(IEnumerable<RenameContext> items)
+        private static void PrintRenameContexts(IEnumerable<RenameContext> items, ConsoleColor consoleColor)
         {
             foreach (var item in items)
             {
-                System.Console.WriteLine($"{item.OldName} --> {item.NewName}");
+                System.Console.ForegroundColor = ConsoleColor.White;
+                System.Console.Write($"{item.OldName} --> ");
+                System.Console.ForegroundColor = consoleColor;
+                System.Console.WriteLine(item.NewName);
             }
+            System.Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
