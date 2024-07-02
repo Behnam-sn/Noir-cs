@@ -2,14 +2,14 @@ namespace Noir.Application.Contracts;
 
 public class RenameContext
 {
-    public RenameContext(string path, string oldName, string newName)
+    public RenameContext(string parentDirectoryName, string oldName, string newName)
     {
-        Path = path;
+        ParentDirectoryName = parentDirectoryName;
         OldName = oldName;
         NewName = newName;
     }
 
-    public string Path { get; }
+    public string ParentDirectoryName { get; }
     public string OldName { get; }
     public string NewName { get; }
 }

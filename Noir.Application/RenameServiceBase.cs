@@ -5,7 +5,7 @@ namespace Noir.Application;
 
 public abstract class RenameServiceBase : IRenameService
 {
-    protected abstract string? GenerateNewFileName(string fileName);
+    protected abstract RenameContext? GenerateRenameContext(string fileName);
 
     public IEnumerable<RenameContext> Execute(RenamePreviewCommand command)
     {
@@ -20,17 +20,12 @@ public abstract class RenameServiceBase : IRenameService
         foreach (var file in files)
         {
             var fileName = Path.GetFileName(file);
-            var newFileName = GenerateNewFileName(fileName);
+            var renameContext = GenerateRenameContext(fileName);
 
-            if (newFileName is null)
+            if (renameContext is null)
             {
                 continue;
             }
-
-            var renameContext = new RenameContext(
-                path: command.Path,
-                oldName: fileName,
-                newName: newFileName);
 
             contexts.Add(renameContext);
         }
@@ -51,28 +46,22 @@ public abstract class RenameServiceBase : IRenameService
         foreach (var file in files)
         {
             var fileName = Path.GetFileName(file);
-            var newFileName = GenerateNewFileName(fileName);
+            var renameContext = GenerateRenameContext(fileName);
 
-            if (newFileName is null)
+            if (renameContext is null)
             {
                 continue;
             }
 
-            var parentDirectoryName = Path.GetFileNameWithoutExtension(newFileName);
-            var parentDirectoryNameWithPath = Path.Combine(command.Path, parentDirectoryName);
+            var parentDirectory = Path.Combine(command.Path, renameContext.ParentDirectoryName);
 
-            if (!Directory.Exists(parentDirectoryNameWithPath))
+            if (!Directory.Exists(parentDirectory))
             {
-                Directory.CreateDirectory(parentDirectoryNameWithPath);
+                Directory.CreateDirectory(parentDirectory);
             }
 
-            var newFileNameWithPath = Path.Combine(parentDirectoryNameWithPath, newFileName);
-            File.Move(file, newFileNameWithPath);
-
-            var renameContext = new RenameContext(
-                path: command.Path,
-                oldName: fileName,
-                newName: newFileName);
+            var newFileName = Path.Combine(parentDirectory, renameContext.NewName);
+            File.Move(file, newFileName);
 
             contexts.Add(renameContext);
         }

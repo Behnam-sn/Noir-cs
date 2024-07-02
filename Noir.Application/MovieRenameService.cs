@@ -1,12 +1,22 @@
+using Noir.Application.Contracts;
 using Noir.Domain;
 
 namespace Noir.Application;
 
 public class MovieRenameService : RenameServiceBase
 {
-    protected override string? GenerateNewFileName(string fileName)
+    protected override RenameContext? GenerateRenameContext(string fileName)
     {
         var movie = Movie.Parse(fileName: fileName);
-        return movie?.ToString();
+
+        if (movie is null)
+        {
+            return null;
+        }
+
+        return new RenameContext(
+            parentDirectoryName: movie.ToString(),
+            oldName: fileName,
+            newName: movie.ToString());
     }
 }

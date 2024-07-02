@@ -1,12 +1,22 @@
-﻿using Noir.Domain;
+﻿using Noir.Application.Contracts;
+using Noir.Domain;
 
 namespace Noir.Application;
 
 public class EpisodeRenameService : RenameServiceBase
 {
-    protected override string? GenerateNewFileName(string fileName)
+    protected override RenameContext? GenerateRenameContext(string fileName)
     {
         var episode = Episode.Parse(fileName: fileName);
-        return episode?.ToString();
+
+        if (episode is null)
+        {
+            return null;
+        }
+
+        return new RenameContext(
+            parentDirectoryName: $"Season {episode.EpisodeIndex.Season}",
+            oldName: fileName,
+            newName: episode.ToString());
     }
 }
