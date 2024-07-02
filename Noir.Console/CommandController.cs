@@ -1,6 +1,6 @@
-﻿using Noir.Domain.Contracts;
-using Noir.Service;
-using Noir.Service.Contracts;
+﻿using Noir.Application;
+using Noir.Application.Contracts;
+using Noir.Application.Contracts.Commands;
 
 namespace Noir.Console
 {
@@ -9,9 +9,9 @@ namespace Noir.Console
         internal static void PrintCommands()
         {
             System.Console.WriteLine("movie, m");
-            System.Console.WriteLine("series, s");
+            System.Console.WriteLine("episode, e");
             System.Console.WriteLine("help, h");
-            System.Console.WriteLine("exit, e");
+            System.Console.WriteLine("exit, x");
         }
 
         internal static void ProcessMovie()
@@ -19,9 +19,9 @@ namespace Noir.Console
             RenameProcessTemplate(renameService: new MovieRenameService());
         }
 
-        internal static void ProcessSeries()
+        internal static void ProcessEpisode()
         {
-            RenameProcessTemplate(renameService: new SeriesRenameService());
+            RenameProcessTemplate(renameService: new EpisodeRenameService());
         }
 
         private static void RenameProcessTemplate(IRenameService renameService)
@@ -30,15 +30,16 @@ namespace Noir.Console
             var path = System.Console.ReadLine();
             try
             {
-                var previewContexts = renameService.Preview(path);
+                var previewContexts = renameService.Execute(new RenamePreviewCommand(path));
                 PrintRenameContexts(previewContexts);
 
                 System.Console.WriteLine("");
                 System.Console.Write("Confirm [y/n]?");
+
                 var conformation = System.Console.ReadLine();
                 if (conformation?.ToLower() == "y")
                 {
-                    var renameContexts = renameService.Rename(path);
+                    var renameContexts = renameService.Execute(new RenameCommand(path));
                     PrintRenameContexts(renameContexts);
                 }
             }

@@ -19,12 +19,12 @@ internal class Program
                 CommandController.ProcessMovie();
             }
 
-            if (command == "series" || command == "s")
+            if (command == "episode" || command == "e")
             {
-                CommandController.ProcessSeries();
+                CommandController.ProcessEpisode();
             }
 
-            if (command == "exit" || command == "e")
+            if (command == "exit" || command == "x")
             {
                 break;
             }
