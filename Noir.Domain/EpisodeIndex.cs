@@ -13,7 +13,6 @@ public class EpisodeIndex
 
     public string Season { get; }
     public string Episode { get; }
-
     public string CurrentFormat { get; }
 
     public override string ToString()
