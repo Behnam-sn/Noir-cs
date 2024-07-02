@@ -1,6 +1,6 @@
 ﻿namespace Noir.Console;
 
-internal class Program
+public static class Program
 {
     private static void Main(string[] args)
     {
@@ -9,24 +9,23 @@ internal class Program
             System.Console.Write("Enter The Command: ");
             var command = System.Console.ReadLine()?.ToLower();
 
-            if (command == "help" || command == "h")
+            switch (command)
             {
-                CommandController.PrintCommands();
-            }
+                case "help" or "h":
+                    CommandController.PrintCommands();
+                    break;
 
-            if (command == "movie" || command == "m")
-            {
-                CommandController.ProcessMovie();
-            }
+                case "movie" or "m":
+                    CommandController.ProcessMovie();
+                    break;
 
-            if (command == "episode" || command == "e")
-            {
-                CommandController.ProcessEpisode();
-            }
+                case "episode" or "e":
+                    CommandController.ProcessEpisode();
+                    break;
 
-            if (command == "exit" || command == "x")
-            {
-                break;
+                case "exit" or "x":
+                    Environment.Exit(0);
+                    break;
             }
         }
     }
