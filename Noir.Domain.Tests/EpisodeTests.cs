@@ -9,6 +9,7 @@ public class EpisodeTests
     [InlineData("", null)]
     [InlineData("Regular.Show.S01E01.720p.BluRay.x265.mkv", "Regular Show S01E01.mkv")]
     [InlineData("Regular.Show.S08E27.A.Regular.Epic.Final.Battle.Part.1.720p.STAN.WEB-DL.x264.mkv", "Regular Show S08E27.mkv")]
+    [InlineData("Invincible.2021.S02E01.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv", "Invincible S02E01.mkv")]
     public void ParseTest(string fileName, string? expected)
     {
         // Given
