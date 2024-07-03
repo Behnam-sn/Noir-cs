@@ -1,4 +1,4 @@
-﻿namespace Noir.Domain;
+﻿namespace Noir.Domain.Episode;
 
 public class EpisodeTitle : Title
 {
