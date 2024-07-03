@@ -33,9 +33,7 @@ namespace Noir.Console
                 var previewContexts = renameService.Execute(new RenamePreviewCommand(path));
                 PrintRenameContexts(previewContexts, ConsoleColor.Yellow);
 
-                System.Console.WriteLine("");
                 System.Console.Write("Confirm [y/n]?");
-
                 var conformation = System.Console.ReadLine();
                 if (conformation?.ToLower() == "y")
                 {
