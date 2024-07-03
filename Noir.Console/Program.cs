@@ -6,7 +6,7 @@ public static class Program
     {
         while (true)
         {
-            System.Console.Write("Enter The Command: ");
+            System.Console.Write("Command: ");
             var command = System.Console.ReadLine()?.ToLower();
 
             switch (command)
