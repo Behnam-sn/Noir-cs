@@ -15,7 +15,7 @@ public class MovieRenameService : RenameServiceBase
         }
 
         return new RenameContext(
-            parentDirectoryName: movie.ToString(),
+            parentDirectoryName: movie.Title.Name,
             oldName: fileName,
             newName: movie.ToString());
     }
