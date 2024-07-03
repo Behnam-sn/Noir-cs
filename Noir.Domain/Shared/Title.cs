@@ -25,7 +25,7 @@ public abstract class Title
         };
         var separator = possibleSeparators.MaxBy(t => t.Count);
 
-        var cleanName = separator.Character == ' ' ? name : name.Replace(separator.Character, ' ');
+        var cleanName = separator!.Character == ' ' ? name : name.Replace(separator.Character, ' ');
         return cleanName.Trim();
     }
 }
