@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Noir.Domain.Episode;
+namespace Noir.Domain.Episodes;
 
 public class EpisodeIndex
 {

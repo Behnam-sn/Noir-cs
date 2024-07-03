@@ -1,5 +1,5 @@
 ﻿using Noir.Application.Contracts;
-using Noir.Domain.Episode;
+using Noir.Domain.Episodes;
 
 namespace Noir.Application;
 

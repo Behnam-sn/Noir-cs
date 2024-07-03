@@ -1,6 +1,6 @@
 ﻿using Noir.Domain.Shared;
 
-namespace Noir.Domain.Episode;
+namespace Noir.Domain.Episodes;
 
 public class Episode
 {
