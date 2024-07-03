@@ -1,4 +1,6 @@
-﻿namespace Noir.Domain.Movie;
+﻿using Noir.Domain.Shared;
+
+namespace Noir.Domain.Movie;
 
 public class MovieTitle : Title
 {

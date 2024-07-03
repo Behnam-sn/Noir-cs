@@ -11,7 +11,7 @@ public class EpisodeTests
     {
         // Given
         // When
-        var series = Episode.Parse(fileName: fileName);
+        var series = Episode.Episode.Parse(fileName: fileName);
         var actual = series?.ToString();
         // Then
         Assert.Equal(expected, actual);
