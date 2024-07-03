@@ -1,3 +1,5 @@
+using Noir.Domain.Movies;
+
 namespace Noir.Domain.Tests;
 
 public class MovieTests
@@ -10,7 +12,7 @@ public class MovieTests
     {
         // Given
         // When
-        var movie = Movie.Movie.Parse(fileName: fileName);
+        var movie = Movie.Parse(fileName: fileName);
         var actual = movie?.ToString();
         // Then
         Assert.Equal(expected, actual);

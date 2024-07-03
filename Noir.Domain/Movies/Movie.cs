@@ -1,6 +1,6 @@
 using Noir.Domain.Shared;
 
-namespace Noir.Domain.Movie;
+namespace Noir.Domain.Movies;
 
 public class Movie
 {

@@ -1,5 +1,5 @@
 using Noir.Application.Contracts;
-using Noir.Domain.Movie;
+using Noir.Domain.Movies;
 
 namespace Noir.Application;
 
