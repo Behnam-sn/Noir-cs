@@ -8,6 +8,7 @@ public class MovieTests
     [InlineData("", null)]
     [InlineData("Babylon.2022.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv", "Babylon.mkv")]
     [InlineData("Jimmy.Carr.Natural.Born.Killer.2024.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv", "Jimmy Carr Natural Born Killer.mkv")]
+    [InlineData("Invincible.Presenting.Atom.Eve.Special.Episode.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv", "Invincible Presenting Atom Eve Special Episode.mkv")]
     public void ParseTest(string fileName, string? expected)
     {
         // Given
