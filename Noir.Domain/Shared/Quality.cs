@@ -2,12 +2,18 @@
 
 public class Quality
 {
-    public string Type { get; }
+    private static readonly string[] types =
+    [
+        "1080",
+        "720"
+    ];
 
     public Quality(string type)
     {
         Type = type;
     }
+
+    public string Type { get; }
 
     public override string ToString()
     {
@@ -16,6 +22,13 @@ public class Quality
 
     public static Quality? Parse(string text)
     {
+        foreach (var item in types)
+        {
+            if (text.Contains(item))
+            {
+                return new Quality(item);
+            }
+        }
         return null;
     }
 }
