@@ -12,10 +12,21 @@ public class MovieTitle : Title
     {
         var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
 
-        if (year is not null)
+        var indexes = new List<int>();
+
+        if (year != null)
         {
-            var yearIndex = fileNameWithoutExtension.LastIndexOf(year.Numbers);
-            var name = fileName[..yearIndex];
+            indexes.Add(fileNameWithoutExtension.IndexOf(year.Numbers, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+        if (quality != null)
+        {
+            indexes.Add(fileNameWithoutExtension.IndexOf(quality.Type, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+        if (indexes.Count > 0)
+        {
+            var name = fileNameWithoutExtension[..indexes.Min()];
             return new MovieTitle(name);
         }
 
