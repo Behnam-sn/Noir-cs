@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noir.Console", "Noir.Consol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noir.Domain.Tests", "Noir.Domain.Tests\Noir.Domain.Tests.csproj", "{8734702F-2D59-489B-A068-53F1FED0A1FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noir.Domain.Contracts", "Noir.Domain.Contracts\Noir.Domain.Contracts.csproj", "{48183E48-B939-41C6-8833-6D6B6F15C1D7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A85AA0CD-EDFA-4772-98CA-2BACBB88FCAF}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -38,10 +36,6 @@ Global
 		{8734702F-2D59-489B-A068-53F1FED0A1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8734702F-2D59-489B-A068-53F1FED0A1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8734702F-2D59-489B-A068-53F1FED0A1FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48183E48-B939-41C6-8833-6D6B6F15C1D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48183E48-B939-41C6-8833-6D6B6F15C1D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48183E48-B939-41C6-8833-6D6B6F15C1D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48183E48-B939-41C6-8833-6D6B6F15C1D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CC787D1-8699-4D48-ACB3-619C43A47DEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7CC787D1-8699-4D48-ACB3-619C43A47DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC787D1-8699-4D48-ACB3-619C43A47DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
