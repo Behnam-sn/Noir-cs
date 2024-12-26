@@ -1,13 +1,13 @@
 using Noir.Presentation.Contracts;
 
-namespace Noir.Presentation.ConsoleControllers;
+namespace Noir.Presentation.Abstractions;
 
-public abstract class BaseController
+public abstract class BaseConsoleController
 {
     protected abstract string Title { get; }
     protected List<Command> Commands { get; } = [];
 
-    public BaseController()
+    public BaseConsoleController()
     {
         Commands.AddRange([
             new(
@@ -25,22 +25,22 @@ public abstract class BaseController
     {
         foreach (var command in Commands)
         {
-            System.Console.WriteLine(
+            Console.WriteLine(
                 string.Join(
                     separator: ", ",
                     values: command.Titles
                 )
             );
         }
-        System.Console.WriteLine("");
+        Console.WriteLine("");
     }
 
     public void Run()
     {
         while (true)
         {
-            System.Console.Write($"{Title} Command: ");
-            var input = System.Console.ReadLine()?.ToLower();
+            Console.Write($"{Title} Command: ");
+            var input = Console.ReadLine()?.ToLower();
 
             var command = Commands
                 .FirstOrDefault(
@@ -65,7 +65,7 @@ public abstract class BaseController
             }
             catch (Exception exception)
             {
-                System.Console.WriteLine(exception.Message);
+                Console.WriteLine(exception.Message);
             }
         }
     }

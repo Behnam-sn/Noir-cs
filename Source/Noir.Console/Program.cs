@@ -1,11 +1,3 @@
-﻿using Noir.Presentation.ConsoleControllers;
+﻿using Noir.Presentation;
 
-namespace Noir.Console;
-
-public static class Program
-{
-    private static void Main(string[] args)
-    {
-        new MainController().Run();
-    }
-}
+new MainController().Run();

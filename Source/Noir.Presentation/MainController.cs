@@ -1,9 +1,10 @@
 ﻿using Noir.Application;
 using Noir.Application.Commands;
+using Noir.Presentation.Abstractions;
 
-namespace Noir.Presentation.ConsoleControllers;
+namespace Noir.Presentation;
 
-public class MainController : BaseController
+public class MainController : BaseConsoleController
 {
     protected override string Title { get; } = "Noir";
 
@@ -33,8 +34,8 @@ public class MainController : BaseController
 
     private static void RenameProcessTemplate(IRenameService renameService)
     {
-        System.Console.Write("Path: ");
-        var path = System.Console.ReadLine();
+        Console.Write("Path: ");
+        var path = Console.ReadLine();
         try
         {
             var previewContexts = renameService.Execute(new RenamePreviewCommand(path));
@@ -43,8 +44,8 @@ public class MainController : BaseController
                 consoleColor: ConsoleColor.Yellow
             );
 
-            System.Console.Write("Confirm [y/n]? ");
-            var conformation = System.Console.ReadLine();
+            Console.Write("Confirm [y/n]? ");
+            var conformation = Console.ReadLine();
             if (conformation?.ToLower() == "y")
             {
                 var renameContexts = renameService.Execute(new RenameCommand(path));
@@ -56,7 +57,7 @@ public class MainController : BaseController
         }
         catch (Exception exception)
         {
-            System.Console.WriteLine(exception.Message);
+            Console.WriteLine(exception.Message);
         }
     }
 
@@ -64,12 +65,12 @@ public class MainController : BaseController
     {
         foreach (var item in items.OrderBy(i => i.NewName))
         {
-            System.Console.ForegroundColor = ConsoleColor.White;
-            System.Console.Write($"{item.OldName} --> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"{item.OldName} --> ");
 
-            System.Console.ForegroundColor = consoleColor;
-            System.Console.WriteLine(item.NewName);
+            Console.ForegroundColor = consoleColor;
+            Console.WriteLine(item.NewName);
         }
-        System.Console.ForegroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }
