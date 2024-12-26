@@ -1,5 +1,3 @@
-using Noir.Presentation.Contracts;
-
 namespace Noir.Presentation.Abstractions;
 
 public abstract class BaseConsoleController
