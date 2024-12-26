@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A85AA0CD-EDFA-4772-98CA-2BACBB88FCAF}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noir.Application", "Noir.Application\Noir.Application.csproj", "{7CC787D1-8699-4D48-ACB3-619C43A47DEE}"
