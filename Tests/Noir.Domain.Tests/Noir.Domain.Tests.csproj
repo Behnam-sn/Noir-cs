@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Noir.Domain\Noir.Domain.csproj" />
+    <ProjectReference Include="../../Source/Noir.Domain/Noir.Domain.csproj" />
   </ItemGroup>
 
 </Project>
