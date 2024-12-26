@@ -1,13 +1,13 @@
-using Noir.Console.Contracts;
+using Noir.Presentation.Contracts;
 
-namespace Noir.Console.ConsoleControllers;
+namespace Noir.Presentation.ConsoleControllers;
 
-internal abstract class BaseController
+public abstract class BaseController
 {
     protected abstract string Title { get; }
     protected List<Command> Commands { get; } = [];
 
-    internal BaseController()
+    public BaseController()
     {
         Commands.AddRange([
             new(
@@ -35,7 +35,7 @@ internal abstract class BaseController
         System.Console.WriteLine("");
     }
 
-    internal void Run()
+    public void Run()
     {
         while (true)
         {

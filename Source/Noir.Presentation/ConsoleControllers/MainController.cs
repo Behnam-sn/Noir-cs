@@ -1,13 +1,13 @@
 ﻿using Noir.Application;
 using Noir.Application.Commands;
 
-namespace Noir.Console.ConsoleControllers;
+namespace Noir.Presentation.ConsoleControllers;
 
-internal class MainController : BaseController
+public class MainController : BaseController
 {
     protected override string Title { get; } = "Noir";
 
-    internal MainController()
+    public MainController()
     {
         Commands.AddRange([
             new(
