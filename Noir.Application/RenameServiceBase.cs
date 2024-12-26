@@ -1,5 +1,4 @@
-﻿using Noir.Application.Contracts;
-using Noir.Application.Contracts.Commands;
+﻿using Noir.Application.Commands;
 
 namespace Noir.Application;
 

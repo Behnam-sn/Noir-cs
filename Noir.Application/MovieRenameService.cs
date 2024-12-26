@@ -1,4 +1,3 @@
-using Noir.Application.Contracts;
 using Noir.Domain.Movies;
 
 namespace Noir.Application;
