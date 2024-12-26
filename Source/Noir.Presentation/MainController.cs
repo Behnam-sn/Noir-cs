@@ -1,10 +1,14 @@
-﻿using Noir.Application;
-using Noir.Application.Commands;
+﻿using Noir.Application.Episodes;
+using Noir.Application.Movies;
+using Noir.Application.Shared.Commands;
+using Noir.Application.Shared.Interfaces;
+using Noir.Application.Shared.Queries;
+using Noir.Application.Shared.Responses;
 using Noir.Presentation.Abstractions;
 
 namespace Noir.Presentation;
 
-public class MainController : BaseConsoleController
+public sealed class MainController : BaseConsoleController
 {
     protected override string Title { get; } = "Noir";
 
@@ -38,7 +42,7 @@ public class MainController : BaseConsoleController
         var path = Console.ReadLine();
         try
         {
-            var previewContexts = renameService.Execute(new RenamePreviewCommand(path));
+            var previewContexts = renameService.Execute(new RenamePreviewQuery(path));
             PrintRenameContexts(
                 items: previewContexts,
                 consoleColor: ConsoleColor.Yellow

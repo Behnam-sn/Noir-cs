@@ -1,12 +1,15 @@
-﻿using Noir.Application.Commands;
+﻿using Noir.Application.Shared.Commands;
+using Noir.Application.Shared.Interfaces;
+using Noir.Application.Shared.Queries;
+using Noir.Application.Shared.Responses;
 
-namespace Noir.Application;
+namespace Noir.Application.Shared.Abstractions;
 
 public abstract class RenameServiceBase : IRenameService
 {
     protected abstract RenameContext? GenerateRenameContext(string fileName);
 
-    public IEnumerable<RenameContext> Execute(RenamePreviewCommand command)
+    public IEnumerable<RenameContext> Execute(RenamePreviewQuery command)
     {
         if (!Directory.Exists(command.Path))
         {
