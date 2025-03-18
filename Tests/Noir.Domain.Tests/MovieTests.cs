@@ -2,7 +2,7 @@ using Noir.Domain.Movies;
 
 namespace Noir.Domain.Tests;
 
-public class MovieTests
+public sealed class MovieTests
 {
     [Theory]
     [InlineData("", null)]

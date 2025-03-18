@@ -2,7 +2,7 @@
 
 namespace Noir.Domain.Shared;
 
-public class Year
+public sealed class Year
 {
     public string Numbers { get; }
 

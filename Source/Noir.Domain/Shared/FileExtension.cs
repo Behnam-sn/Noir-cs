@@ -1,13 +1,13 @@
 ﻿namespace Noir.Domain.Shared;
 
-public class FileExtension
+public sealed class FileExtension
 {
+    public string Type { get; }
+
     public FileExtension(string type)
     {
         Type = type;
     }
-
-    public string Type { get; }
 
     public override string ToString()
     {

@@ -2,7 +2,7 @@
 
 namespace Noir.Domain.Tests;
 
-public class EpisodeTests
+public sealed class EpisodeTests
 {
     //[InlineData("Regular.Show.S08E30E31.A.Regular.Epic.Final.Battle.Part.2.720p.STAN.WEB-DL.x264", "Regular Show S08E30E31")]
     [Theory]

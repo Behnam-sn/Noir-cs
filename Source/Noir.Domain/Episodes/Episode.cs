@@ -2,9 +2,21 @@
 
 namespace Noir.Domain.Episodes;
 
-public class Episode
+public sealed class Episode
 {
-    public Episode(EpisodeTitle title, EpisodeIndex index, Year? year = null, Quality? quality = null, FileExtension? extension = null)
+    public EpisodeTitle Title { get; }
+    public EpisodeIndex Index { get; }
+    public Year? Year { get; }
+    public Quality? Quality { get; }
+    public FileExtension? Extension { get; }
+
+    public Episode(
+        EpisodeTitle title,
+        EpisodeIndex index,
+        Year? year = null,
+        Quality? quality = null,
+        FileExtension? extension = null
+    )
     {
         Title = title;
         Index = index;
@@ -12,12 +24,6 @@ public class Episode
         Quality = quality;
         Extension = extension;
     }
-
-    public EpisodeTitle Title { get; }
-    public EpisodeIndex Index { get; }
-    public Year? Year { get; }
-    public Quality? Quality { get; }
-    public FileExtension? Extension { get; }
 
     public override string ToString()
     {

@@ -1,6 +1,6 @@
 ﻿namespace Noir.Domain.Shared;
 
-public class Quality
+public sealed class Quality
 {
     private static readonly string[] types =
     [
@@ -8,12 +8,13 @@ public class Quality
         "720"
     ];
 
+    public string Type { get; }
+
     public Quality(string type)
     {
         Type = type;
     }
 
-    public string Type { get; }
 
     public override string ToString()
     {

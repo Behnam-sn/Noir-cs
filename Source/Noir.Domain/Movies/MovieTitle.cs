@@ -2,7 +2,7 @@
 
 namespace Noir.Domain.Movies;
 
-public class MovieTitle : Title
+public sealed class MovieTitle : Title
 {
     public MovieTitle(string name) : base(name)
     {

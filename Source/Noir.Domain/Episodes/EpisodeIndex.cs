@@ -2,18 +2,18 @@ using System.Text.RegularExpressions;
 
 namespace Noir.Domain.Episodes;
 
-public class EpisodeIndex
+public sealed class EpisodeIndex
 {
+    public string Season { get; }
+    public string Episode { get; }
+    public string CurrentFormat { get; }
+
     public EpisodeIndex(string season, string episode, string currentFormat)
     {
         Season = season;
         Episode = episode;
         CurrentFormat = currentFormat;
     }
-
-    public string Season { get; }
-    public string Episode { get; }
-    public string CurrentFormat { get; }
 
     public override string ToString()
     {

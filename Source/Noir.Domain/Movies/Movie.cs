@@ -2,20 +2,25 @@ using Noir.Domain.Shared;
 
 namespace Noir.Domain.Movies;
 
-public class Movie
+public sealed class Movie
 {
-    public Movie(MovieTitle title, Year? year = null, Quality? quality = null, FileExtension? extension = null)
+    public MovieTitle Title { get; }
+    public Year? Year { get; }
+    public Quality? Quality { get; }
+    public FileExtension? Extension { get; }
+
+    public Movie(
+        MovieTitle title,
+        Year? year = null,
+        Quality? quality = null,
+        FileExtension? extension = null
+    )
     {
         Title = title;
         Year = year;
         Quality = quality;
         Extension = extension;
     }
-
-    public MovieTitle Title { get; }
-    public Year? Year { get; }
-    public Quality? Quality { get; }
-    public FileExtension? Extension { get; }
 
     public override string ToString()
     {

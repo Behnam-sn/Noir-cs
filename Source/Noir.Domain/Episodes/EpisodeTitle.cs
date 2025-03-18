@@ -2,7 +2,7 @@
 
 namespace Noir.Domain.Episodes;
 
-public class EpisodeTitle : Title
+public sealed class EpisodeTitle : Title
 {
     public EpisodeTitle(string name) : base(name)
     {
