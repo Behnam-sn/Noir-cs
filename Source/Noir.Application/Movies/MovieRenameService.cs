@@ -18,7 +18,7 @@ public sealed class MovieRenameService : RenameServiceBase
         return new RenameContext(
             ParentDirectoryName: movie.Title.Name,
             OldName: fileName,
-            NewName: movie.ToString()
+            NewName: movie.GenerateFileName(withYear: true)
         );
     }
 }

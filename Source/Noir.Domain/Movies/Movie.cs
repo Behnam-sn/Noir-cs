@@ -1,3 +1,4 @@
+using System.Text;
 using Noir.Domain.Shared;
 
 namespace Noir.Domain.Movies;
@@ -22,9 +23,22 @@ public sealed class Movie
         Extension = extension;
     }
 
-    public override string ToString()
+    public string GenerateFileName(bool withYear = false)
     {
-        return $"{Title}{Extension}";
+        var fileName = new StringBuilder();
+        fileName.Append(Title);
+
+        if (withYear == true && Year is not null)
+        {
+            fileName.Append($" ({Year})");
+        }
+
+        if (Extension is not null)
+        {
+            fileName.Append(Extension);
+        }
+
+        return fileName.ToString();
     }
 
     public static Movie? Parse(string fileName)
