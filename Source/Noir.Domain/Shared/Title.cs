@@ -6,7 +6,9 @@ public abstract class Title
 
     public Title(string name)
     {
-        Name = Clear(name);
+        var newName = Clear(name);
+        newName = FixIrregularWords(newName);
+        Name = newName;
     }
 
     public override string ToString()
@@ -14,7 +16,7 @@ public abstract class Title
         return Name;
     }
 
-    private string Clear(string name)
+    private static string Clear(string name)
     {
         var possibleSeparators = new Separator[]
         {
@@ -27,5 +29,12 @@ public abstract class Title
 
         var cleanName = separator!.Character == ' ' ? name : name.Replace(separator.Character, ' ');
         return cleanName.Trim();
+    }
+
+    private static string FixIrregularWords(string name)
+    {
+        return name
+            .Replace(" A K A ", " A.K.A. ", StringComparison.CurrentCultureIgnoreCase)
+            .Replace(" Mr ", " Mr. ", StringComparison.CurrentCultureIgnoreCase);
     }
 }
