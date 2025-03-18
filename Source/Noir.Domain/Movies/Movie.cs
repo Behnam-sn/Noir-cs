@@ -23,7 +23,7 @@ public sealed class Movie
         Extension = extension;
     }
 
-    public string GenerateFileName(bool withYear = false)
+    public string GenerateFileName(bool withYear = false, bool withExtension = false)
     {
         var fileName = new StringBuilder();
         fileName.Append(Title);
@@ -33,7 +33,7 @@ public sealed class Movie
             fileName.Append($" ({Year})");
         }
 
-        if (Extension is not null)
+        if (withExtension == true && Extension is not null)
         {
             fileName.Append(Extension);
         }
