@@ -26,6 +26,7 @@ public sealed class EpisodeTitle : Title
         }
 
         var name = fileName[..indexes.Min()];
+
         return new EpisodeTitle(name);
     }
 }
