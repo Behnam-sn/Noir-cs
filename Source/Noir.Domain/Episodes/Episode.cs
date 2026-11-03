@@ -4,7 +4,7 @@ namespace Noir.Domain.Episodes;
 
 public sealed class Episode
 {
-    public EpisodeTitle Title { get; }
+    public EpisodeTitle Title { get; private set; }
     public EpisodeIndex Index { get; }
     public Year? Year { get; }
     public Quality? Quality { get; }
@@ -23,6 +23,11 @@ public sealed class Episode
         Year = year;
         Quality = quality;
         Extension = extension;
+    }
+
+    public void UpdateTitle(EpisodeTitle title)
+    {
+        Title = title;
     }
 
     public override string ToString()

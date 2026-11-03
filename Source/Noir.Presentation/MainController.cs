@@ -23,6 +23,10 @@ public sealed class MainController : BaseConsoleController
                 Titles: ["Episodes", "E"],
                 Action: EpisodesManagement
             ),
+            new (
+                Titles: ["Custom Episodes", "CE"],
+                Action: CustomEpisodesManagement
+            )
         ]);
     }
 
@@ -34,6 +38,46 @@ public sealed class MainController : BaseConsoleController
     private static void EpisodesManagement()
     {
         RenameProcessTemplate(renameService: new EpisodeRenameService());
+    }
+
+    private static void CustomEpisodesManagement()
+    {
+        Console.Write("Path: ");
+        var path = Console.ReadLine();
+        
+        Console.Write("Name: ");
+        var name = Console.ReadLine();
+
+        if (name is null)
+        {
+            return;
+        }
+
+        try
+        {
+            var renameService = new CustomEpisodeRenameService(name);
+            
+            var previewContexts = renameService.Execute(new RenamePreviewQuery(path));
+            PrintRenameContexts(
+                items: previewContexts,
+                consoleColor: ConsoleColor.Yellow
+            );
+
+            Console.Write("Confirm [y/n]? ");
+            var conformation = Console.ReadLine();
+            if (conformation?.ToLower() == "y")
+            {
+                var renameContexts = renameService.Execute(new RenameCommand(path));
+                PrintRenameContexts(
+                    items: renameContexts,
+                    consoleColor: ConsoleColor.Green
+                );
+            }
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+        }
     }
 
     private static void RenameProcessTemplate(IRenameService renameService)
