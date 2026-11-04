@@ -32,12 +32,16 @@ public sealed class MainController : BaseConsoleController
 
     private static void MoviesManagement()
     {
-        RenameProcessTemplate(renameService: new MovieRenameService());
+        Console.Write("Path: ");
+        var path = Console.ReadLine();
+        RenameProcessTemplate(renameService: new MovieRenameService(), path);
     }
 
     private static void EpisodesManagement()
     {
-        RenameProcessTemplate(renameService: new EpisodeRenameService());
+        Console.Write("Path: ");
+        var path = Console.ReadLine();
+        RenameProcessTemplate(renameService: new EpisodeRenameService(), path);
     }
 
     private static void CustomEpisodesManagement()
@@ -52,38 +56,12 @@ public sealed class MainController : BaseConsoleController
         {
             return;
         }
-
-        try
-        {
-            var renameService = new CustomEpisodeRenameService(name);
-            
-            var previewContexts = renameService.Execute(new RenamePreviewQuery(path));
-            PrintRenameContexts(
-                items: previewContexts,
-                consoleColor: ConsoleColor.Yellow
-            );
-
-            Console.Write("Confirm [y/n]? ");
-            var conformation = Console.ReadLine();
-            if (conformation?.ToLower() == "y")
-            {
-                var renameContexts = renameService.Execute(new RenameCommand(path));
-                PrintRenameContexts(
-                    items: renameContexts,
-                    consoleColor: ConsoleColor.Green
-                );
-            }
-        }
-        catch (Exception exception)
-        {
-            Console.WriteLine(exception.Message);
-        }
+        
+        RenameProcessTemplate(renameService: new CustomEpisodeRenameService(name), path);
     }
 
-    private static void RenameProcessTemplate(IRenameService renameService)
+    private static void RenameProcessTemplate(IRenameService renameService, string? path)
     {
-        Console.Write("Path: ");
-        var path = Console.ReadLine();
         try
         {
             var previewContexts = renameService.Execute(new RenamePreviewQuery(path));
